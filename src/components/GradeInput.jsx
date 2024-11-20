@@ -3,8 +3,8 @@ import { X } from 'lucide-react'
 
 const GradeInput = ({ index, grades, setGrades }) => {
     const id = grades[index].id;
-    const [gradeValue, setGradeValue] = useState(0);
-    const [gradePercent, setGradePercent] = useState(0);
+    const [localGradeValue, setLocalGradeValue] = useState(0);
+    const [localGradePercent, setLocalGradePercent] = useState(0);
 
     const writeFromGradesList = () => {
         const gradeTextInput = document.getElementById(`nota-${id}`);
@@ -16,8 +16,8 @@ const GradeInput = ({ index, grades, setGrades }) => {
 
     const writeToGradesList = () => {
         const newGradesList = [...grades];
-        newGradesList[index].value = gradeValue;
-        newGradesList[index].percent = gradePercent;
+        newGradesList[index].value = localGradeValue;
+        newGradesList[index].percent = localGradePercent;
         setGrades(newGradesList);
     }
 
@@ -27,14 +27,14 @@ const GradeInput = ({ index, grades, setGrades }) => {
 
     useEffect(() => {
         writeToGradesList();
-    }, [gradeValue, gradePercent])
+    }, [localGradeValue, localGradePercent])
 
 
     const handleGradeChange = (e) => {
-        setGradeValue(e.target.value);
+        setLocalGradeValue(e.target.value);
     };
     const handlePercentChange = (e) => {
-        setGradePercent(e.target.value)
+        setLocalGradePercent(e.target.value)
     };
 
     const handleDelete = () => {
@@ -44,7 +44,6 @@ const GradeInput = ({ index, grades, setGrades }) => {
 
     return (
         <div className='flex gap-[10%] hover:bg-slate-700 py-1 px-5 rounded-md transition-all'>
-            {id}
             <div className='flex flex-col py-2 w-1/2 group/grade'>
                 <label className='text-sm text-slate-100 group-focus-within/grade:text-sky-400 transition-all ease-in-out' htmlFor={`nota-${id}`}>Nota {index + 1} </label>
                 <input id={`nota-${id}`}
