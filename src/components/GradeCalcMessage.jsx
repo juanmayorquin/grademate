@@ -11,9 +11,9 @@ const GradeCalcMessage = ({ neededGrade, missingPercent, mean }) => {
         )
     }
     if (missingPercent < 0) {
-        return(
+        return (
             <>
-                <p>El porcentaje debe estar entre 0 y 100</p>
+                <p>El porcentaje debe ser menor que 100</p>
             </>
         )
     }

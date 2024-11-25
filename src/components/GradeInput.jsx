@@ -1,18 +1,20 @@
 import React from "react";
 import { X } from "lucide-react";
 
-const GradeInput = ({ index, grades, setGrades }) => {
+const GradeInput = ({ index, grades, setGrades, maxGrade }) => {
   const id = grades[index].id;
 
   const handleGradeChange = (e) => {
+    const value = Math.max(0, Math.min(maxGrade, e.target.value))
     setGrades(prevGradesList =>
-      prevGradesList.map((grade, i) => (i === index ? { ...grade, value: e.target.value } : grade))
+      prevGradesList.map((grade, i) => (i === index ? { ...grade, value: value } : grade))
     )
   };
 
   const handlePercentChange = (e) => {
+    const percent = Math.max(0, Math.min(100, e.target.value))
     setGrades(prevGradesList =>
-      prevGradesList.map((grade, i) => (i === index ? { ...grade, percent: e.target.value } : grade))
+      prevGradesList.map((grade, i) => (i === index ? { ...grade, percent: percent } : grade))
     );
   };
 
