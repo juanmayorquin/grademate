@@ -30,8 +30,8 @@ const GradeCalcMessage = ({ neededGrade, missingPercent, mean }) => {
     return (
         <>
             <p>Necesitas</p>
-            <h3 className="font-bold text-3xl">{neededGrade.toFixed(2)}</h3>
-            <p>en el <span className="font-bold">{missingPercent.toFixed(0)}%</span> restante</p>
+            <h3 className="font-bold text-3xl group-hover:text-sky-400 transition-all">{neededGrade.toFixed(2)}</h3>
+            <p>en el <span className="font-bold group-hover:text-sky-400 transition-all">{missingPercent.toFixed(0)}%</span> restante</p>
         </>
     )
 }

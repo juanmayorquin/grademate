@@ -45,7 +45,7 @@ const GradeCalcForm = () => {
         setMissingPercent(missing * 100);
     };
 
-    useEffect(calcNeededGrade, [grades]);
+    useEffect(calcNeededGrade, [grades, wishedGrade, maxGrade]);
 
     return (
         <div className="relative">
@@ -71,11 +71,11 @@ const GradeCalcForm = () => {
                         Añadir nota
                     </button>
                 </div>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center group">
                     <GradeCalcMessage mean={mean} missingPercent={missingPercent} neededGrade={neededGrade} />
                 </div>
                 <div className="flex justify-end">
-                    <button className="hover:bg-white/5 p-2 rounded-md transition-all" onClick={() => setIsPopupOpen(!isPopupOpen)}>
+                    <button className="hover:bg-white/5 hover:text-sky-400 p-2 rounded-md transition-all" onClick={() => setIsPopupOpen(!isPopupOpen)}>
                         <Bolt />
                     </button>
                 </div>
