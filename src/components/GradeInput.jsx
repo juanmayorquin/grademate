@@ -5,21 +5,19 @@ const GradeInput = ({ index, grades, setGrades }) => {
   const id = grades[index].id;
 
   const handleGradeChange = (e) => {
-    let newGradesList = [...grades];
-    newGradesList[index].value = e.target.value;
-    setGrades(newGradesList);
+    setGrades(prevGradesList =>
+      prevGradesList.map((grade, i) => (i === index ? { ...grade, value: e.target.value } : grade))
+    )
   };
 
   const handlePercentChange = (e) => {
-    let newGradesList = [...grades];
-    newGradesList[index].percent = e.target.value;
-    setGrades(newGradesList);
+    setGrades(prevGradesList =>
+      prevGradesList.map((grade, i) => (i === index ? { ...grade, percent: e.target.value } : grade))
+    );
   };
 
   const handleDelete = () => {
-    grades.length > 1
-      ? setGrades(grades.filter((grade) => grade.id !== id))
-      : setGrades([{ id: 0, value: 0, percent: 0 }]);
+    setGrades(prevGradeList => (prevGradeList.length > 1 ? prevGradeList.filter((grade) => (grade.id !== id)) : [{ id: 0, value: 0, percent: 0 }]))
   };
 
   return (
@@ -37,6 +35,7 @@ const GradeInput = ({ index, grades, setGrades }) => {
           className="bg-transparent outline-none border-b py-0.5 focus:border-b-2 focus:p-1 focus:border-sky-500 focus:outline-none transition-all ease-in-out"
           type="number"
           onChange={handleGradeChange}
+          value = {grades[index]?.value || ""}
         />
       </div>
       <div className="flex flex-col py-2 w-1/2 group/percent">
@@ -52,6 +51,7 @@ const GradeInput = ({ index, grades, setGrades }) => {
           className="bg-transparent outline-none border-b py-0.5 focus:border-b-2 focus:p-1 focus:border-sky-500 focus:outline-none transition-all ease-in-out"
           type="number"
           onChange={handlePercentChange}
+          value={grades[index]?.percent || ""}
         />
       </div>
       <button
