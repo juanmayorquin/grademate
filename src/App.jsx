@@ -1,10 +1,14 @@
-import GradeCalcForm from "./components/GradeCalcForm"
+import SubjectCalc from "./components/SubjectCalc";
+import ConfigModalProvider from "./context/ConfigModalProvider";
+
 function App() {
   return (
     <>
-      <GradeCalcForm />
+      <ConfigModalProvider>
+        <SubjectCalc/>
+      </ConfigModalProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

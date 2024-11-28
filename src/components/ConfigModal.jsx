@@ -1,7 +1,7 @@
 import React from 'react'
 import { X } from 'lucide-react'
 
-const ConfigurationPopup = ({ setIsPopupOpen, wishedGrade, setWishedGrade, maxGrade, setMaxGrade }) => {
+const ConfigModal = ({ setIsPopupOpen, wishedGrade, setWishedGrade, maxGrade, setMaxGrade }) => {
     const handleWishedGradeChange = (e) => {
         setWishedGrade(parseFloat(e.target.value))
     }
@@ -56,4 +56,4 @@ const ConfigurationPopup = ({ setIsPopupOpen, wishedGrade, setWishedGrade, maxGr
     )
 }
 
-export default ConfigurationPopup
+export default ConfigModal
