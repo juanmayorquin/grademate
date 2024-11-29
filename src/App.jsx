@@ -1,11 +1,11 @@
-import SubjectCalc from "./components/SubjectCalc";
+import SubjectPage from "./components/SubjectPage";
 import ConfigModalProvider from "./context/ConfigModalProvider";
 
 function App() {
   return (
     <>
       <ConfigModalProvider>
-        <SubjectCalc/>
+        <SubjectPage/>
       </ConfigModalProvider>
     </>
   );
