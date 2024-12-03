@@ -26,7 +26,7 @@ const SubjectTitle = ({name}) => {
   }, [isEditing]);
 
   return (
-    <div className="flex gap-4 items-center h-min group">
+    <div className="flex gap-4 items-center h-min group w-full">
       {!isEditing ? (
         <h2 className="text-4xl font-bold">{subjectName}</h2>
       ) : (
