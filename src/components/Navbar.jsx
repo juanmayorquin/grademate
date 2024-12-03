@@ -6,7 +6,7 @@ const Navbar = () => {
   const { asideState } = useContext(GUIContext);
   const { isAsideOpen, setAsideOpen } = asideState;
   return (
-    <nav className="flex p-3 justify-between">
+    <nav className="flex p-3 justify-between bg-slate-950">
       <button
         className="hover:text-sky-400 transition-all"
         onClick={() => setAsideOpen(!isAsideOpen)}
