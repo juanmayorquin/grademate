@@ -1,12 +1,15 @@
 import SubjectPage from "./components/SubjectPage";
-import ConfigModalProvider from "./context/ConfigModalProvider";
+import GUIProvider from "./context/GUIProvider";
+import SubjectLayout from "./layouts/SubjectLayout";
 
 function App() {
   return (
     <>
-      <ConfigModalProvider>
-        <SubjectPage/>
-      </ConfigModalProvider>
+      <GUIProvider>
+        <SubjectLayout>
+          <SubjectPage />
+        </SubjectLayout>
+      </GUIProvider>
     </>
   );
 }

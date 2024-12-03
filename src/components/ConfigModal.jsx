@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { X } from 'lucide-react'
+import { GUIContext } from '../context/GUIProvider'
 
-const ConfigModal = ({ setIsPopupOpen, wishedGrade, setWishedGrade, maxGrade, setMaxGrade }) => {
+const ConfigModal = () => {
+
+    const { modalState } = useContext(GUIContext)
+
+    const {setModalOpen, wishedGrade, setWishedGrade, maxGrade, setMaxGrade} = modalState
+
     const handleWishedGradeChange = (e) => {
         setWishedGrade(parseFloat(e.target.value))
     }
@@ -12,9 +18,9 @@ const ConfigModal = ({ setIsPopupOpen, wishedGrade, setWishedGrade, maxGrade, se
 
     return (
         <>
-            <div className="absolute top-0 left-0 w-screen h-screen bg-black/50 backdrop-blur-sm grid place-items-center" onClick={() => setIsPopupOpen(false)}></div>
-            <div className="absolute top-1/2 left-[37.5%] w-1/4 h-auto bg-slate-800 p-8 rounded-md">
-                <button className='absolute top-8 right-8 hover:text-sky-400 transition-all' onClick={() => setIsPopupOpen(false)}><X /></button>
+            <div className="absolute top-0 left-0 w-screen h-screen bg-black/50 backdrop-blur-sm grid place-items-center" onClick={() => setModalOpen(false)}></div>
+            <div className="absolute top-1/4 left-[37.5%] w-1/4 h-auto bg-slate-800 p-8 rounded-md">
+                <button className='absolute top-8 right-8 hover:text-sky-400 transition-all' onClick={() => setModalOpen(false)}><X /></button>
                 <h2 className='font-bold text-3xl mb-4'>Configuración</h2>
                 <div className='flex flex-wrap gap-[10%] py-1 rounded-md'>
                     <div className='flex flex-col py-2 w-auto group/grade'>

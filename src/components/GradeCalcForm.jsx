@@ -3,9 +3,9 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import GradeInput from "./GradeInput";
 import GradeCalcMessage from "./GradeCalcMessage";
-import { ConfigModalContext } from "../context/ConfigModalProvider";
+import { GUIContext } from "../context/GUIProvider";
 
-const GradeCalcForm = ({maxGrade, wishedGrade}) => {
+const GradeCalcForm = () => {
   const [idCounter, setIdCounter] = useState(1);
   const [neededGrade, setNeededGrade] = useState(3);
   const [missingPercent, setMissingPercent] = useState(100);
@@ -18,7 +18,10 @@ const GradeCalcForm = ({maxGrade, wishedGrade}) => {
     },
   ]);
 
-  const {isModalOpen, setIsModalOpen} = useContext(ConfigModalContext);
+  const {modalState} = useContext(GUIContext);
+
+  const {setModalOpen, maxGrade, wishedGrade} = modalState;
+  
 
   const handleAddGrade = () => {
     setGrades([...grades, { id: idCounter, value: 0, percent: 0 }]);
@@ -36,7 +39,8 @@ const GradeCalcForm = ({maxGrade, wishedGrade}) => {
     });
     const missing = 1 - actualPercent;
 
-    const calculatedNeededGrade = missing > 0 ? (wishedGrade - actualGrade) / missing : 0;
+    const calculatedNeededGrade =
+      missing > 0 ? (wishedGrade - actualGrade) / missing : 0;
 
     if (missing == 0) {
       setMean(actualGrade);
@@ -49,7 +53,7 @@ const GradeCalcForm = ({maxGrade, wishedGrade}) => {
   useEffect(calcNeededGrade, [grades, wishedGrade, maxGrade]);
 
   return (
-    <div className="bg-slate-900 max-w-3xl flex flex-col gap-4 m-auto text-white p-8 rounded-xl">
+    <div className="bg-slate-900 flex flex-col gap-4 text-white p-8 rounded-b-xl">
       <h2>Ingresa aquí todas tus notas</h2>
       <div className="w-full flex flex-col gap-4">
         <div className="flex flex-col gap-2">
@@ -81,7 +85,9 @@ const GradeCalcForm = ({maxGrade, wishedGrade}) => {
       <div className="flex justify-end">
         <button
           className="hover:bg-white/5 hover:text-sky-400 p-2 rounded-md transition-all"
-          onClick={() => setIsModalOpen(!isModalOpen)}
+          onClick={() => {
+            setModalOpen(true);
+          }}
         >
           <Bolt />
         </button>
