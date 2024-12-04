@@ -18,12 +18,12 @@ const GradeCalcForm = () => {
     },
   ]);
 
-  const {modalState} = useContext(GUIContext);
+  const { modalState } = useContext(GUIContext);
 
-  const {setModalOpen, maxGrade, wishedGrade} = modalState;
-  
+  const { setModalOpen, maxGrade, wishedGrade } = modalState;
 
-  const handleAddGrade = () => {
+  const handleAddGrade = (e) => {
+    e.preventDefault();
     setGrades([...grades, { id: idCounter, value: 0, percent: 0 }]);
     setIdCounter(idCounter + 1);
   };
@@ -56,7 +56,7 @@ const GradeCalcForm = () => {
     <div className="md:flex gap-3 p-3 pt-0">
       <div className="bg-slate-900 flex flex-col gap-4 w-full md:w-2/3 text-white p-8 rounded-b-xl">
         <h2>Ingresa aquí todas tus notas</h2>
-        <div className="w-full flex flex-col gap-4">
+        <form onSubmit={handleAddGrade} className="w-full flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             {grades.map((_, index) => (
               <GradeInput
@@ -68,14 +68,11 @@ const GradeCalcForm = () => {
               />
             ))}
           </div>
-          <button
-            className="flex items-center justify-center gap-2 p-2 md:w-1/4 text-white bg-sky-500 hover:bg-sky-400 transition rounded-md"
-            onClick={handleAddGrade}
-          >
+          <button className="flex items-center justify-center gap-2 p-2 md:w-1/4 text-white bg-sky-500 hover:bg-sky-400 transition rounded-md">
             <Plus />
             Añadir nota
           </button>
-        </div>
+        </form>
         <div className="flex justify-end">
           <button
             className="hover:bg-white/5 hover:text-sky-400 p-2 rounded-md transition-all"
