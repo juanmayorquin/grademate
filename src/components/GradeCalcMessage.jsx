@@ -1,6 +1,8 @@
-import React from 'react'
-
+/* eslint-disable react/prop-types */
 const GradeCalcMessage = ({ neededGrade, missingPercent, mean }) => {
+    if (missingPercent===100) {
+        return <h3 className='font-bold text-2xl'>Ingresa tus notas para comenzar</h3>
+    }
     if (missingPercent === 0) {
         return (
             <>
@@ -13,7 +15,7 @@ const GradeCalcMessage = ({ neededGrade, missingPercent, mean }) => {
     if (missingPercent < 0) {
         return (
             <>
-                <p>El porcentaje debe ser menor que 100</p>
+                <h3 className='font-bold text-2xl'>El porcentaje debe ser menor que 100</h3>
             </>
         )
     }

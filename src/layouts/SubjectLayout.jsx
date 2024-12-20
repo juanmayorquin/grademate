@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import Aside from "../components/Aside";
 import Navbar from "../components/Navbar";
 import { GUIContext } from "../context/GUIProvider";

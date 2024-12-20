@@ -1,5 +1,5 @@
 import { Plus, Bolt } from "lucide-react";
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import GradeInput from "./GradeInput";
 import GradeCalcMessage from "./GradeCalcMessage";
@@ -53,7 +53,7 @@ const GradeCalcForm = () => {
   useEffect(calcNeededGrade, [grades, wishedGrade, maxGrade]);
 
   return (
-    <div className="md:flex gap-3 p-3 pt-0">
+    <div className="md:flex gap-3">
       <div className="bg-slate-900 flex flex-col gap-4 w-full md:w-2/3 text-white p-8 rounded-b-xl">
         <h2>Ingresa aquí todas tus notas</h2>
         <form onSubmit={handleAddGrade} className="w-full flex flex-col gap-4">
@@ -84,7 +84,7 @@ const GradeCalcForm = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center group w-1/3 bg-slate-900 rounded-b-xl">
+      <div className="grid place-items-center p-8 group w-1/3 bg-slate-900 rounded-b-xl">
         <GradeCalcMessage
           mean={mean}
           missingPercent={missingPercent}

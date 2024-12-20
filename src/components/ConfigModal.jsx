@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { X } from 'lucide-react'
 import { GUIContext } from '../context/GUIProvider'
 
